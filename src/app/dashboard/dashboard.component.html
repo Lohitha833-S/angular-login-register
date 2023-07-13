@@ -1,9 +1,32 @@
 <app-navbar></app-navbar>
-<main role="main" class="container mt-5">
-  <div class="container">
-    <div class="text-center mt-5">
-      <h3>Dashboard page</h3>
-      <p class="text-bold " [innerText]="'Hi '+this.user.displayName+', your Firebase ID is '+this.user.localId" ></p>
-    </div>
+<div class="container">
+
+  <h1>Sales Prediction</h1>
+  <label>File Upload</label>
+  <input
+    type="file"
+    name="file"
+    (change)="this.onFileSelected($event)"
+    #fileUpload
+  />
+  
+  <label for="my-dropdown">Choose time period:</label>
+  <select
+    id="my-dropdown"
+    name="my-dropdown"
+    #years
+    (change)="onYearChanged(years.value)"
+  >
+    <option value="5">5 years</option>
+    <option value="10">10 years</option>
+    <option value="15">15 years</option>
+    <option value="20">20 years</option>
+    <option value="30">25 years</option>
+  </select>
+  <br/>
+  
+  <button type="submit" (click)="sales()" class="but">Submit</button>
+  <div class="chart-container">
+    <canvas id="MyChart">{{ chart }}</canvas>
   </div>
-</main>
+  </div>
